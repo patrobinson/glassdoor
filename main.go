@@ -116,5 +116,8 @@ func main() {
 	scanner := scanner.NewScanner(logClient, opts)
 
 	ctx := context.Background()
-	scanner.Scan(ctx, logToKafka, logToKafka)
+	for {
+		scanner.Scan(ctx, logToKafka, logToKafka)
+		time.Sleep(200 * time.Millisecond)
+	}
 }
